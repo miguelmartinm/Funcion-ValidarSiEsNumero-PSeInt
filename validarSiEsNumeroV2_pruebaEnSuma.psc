@@ -1,7 +1,7 @@
 // Compara cada caracter de la cadena ingresada por el usuario.
-// Parámetros: cadena Ingresada por consola
-// Retorna: VERDADERO si todos los caracteres cumplen la condición de un número.
-// 			FALSO si al menos un caracter no forma la estructura de un número, (excepto (-), (+) y (.) que hacen parte de un número.
+// ParÃ¡metros: cadena Ingresada por consola
+// Retorna: VERDADERO si todos los caracteres cumplen la condiciÃ³n de un nÃºmero.
+// 			FALSO si al menos un caracter no forma la estructura de un nÃºmero, (excepto (-), (+) y (.) que hacen parte de un nÃºmero.
 Funcion esNumero <- validarSiEsNumero ( cadenaIngresada )	
 	Definir tamanioCadena, posicionCaracter Como Entero
 	Definir caracterCadena Como Caracter
@@ -9,7 +9,6 @@ Funcion esNumero <- validarSiEsNumero ( cadenaIngresada )
 	
 	tamanioCadena = Longitud(cadenaIngresada)	
 	contadorPuntos = 0
-
 	Para posicionCaracter <- 0 Hasta tamanioCadena-1 Hacer
 		caracterCadena = SubCadena(cadenaIngresada, posicionCaracter, posicionCaracter)		
 		esNumero = Falso
@@ -18,33 +17,32 @@ Funcion esNumero <- validarSiEsNumero ( cadenaIngresada )
 		SiNo			
 			Si (caracterCadena = "+" O caracterCadena = "-") 
 				esNumero = Verdadero
-				// Si el menos (-) o el más (+) están después del primer dígito, no es un número
+				// Si el menos (-) o el mÃ¡s (+) estÃ¡n despuÃ©s del primer dÃ­gito, no es un nÃºmero
 				Si posicionCaracter > 0 Entonces
 					esNumero = Falso
 					posicionCaracter <- tamanioCadena
 				FinSi			
 			SiNo
-				// Compara si el caracter evaluado coincide con un dígito
+				// Compara si el caracter evaluado coincide con un dÃ­gito
 				Para digito = 0 Hasta 9 Hacer					
 					Si ConvertirATexto(digito) = caracterCadena Entonces
 						esNumero <- Verdadero
 						digito <- 9						
 					FinSi					
 				Fin Para
-				// Si el caracter evaluado no cumple las condiciones anteriores, la cadena ingresada no representa un número
+				// Si el caracter evaluado no cumple las condiciones anteriores, la cadena ingresada no representa un nÃºmero
 				Si esNumero = Falso Entonces
 					esNumero <- Falso
 					posicionCaracter <- tamanioCadena
 				FinSi	
 			FinSi
 		FinSi
-		// Si existe más de un punto en la cadena ingresada, no representa un número
+		// Si existe mÃ¡s de un punto en la cadena ingresada, no representa un nÃºmero
 		Si contadorPuntos > 1 Entonces
 			esNumero <- Falso
 			posicionCaracter <- tamanioCadena-1
 		FinSi		
 	Fin Para	
-
 Fin Funcion
 
 Algoritmo validarSiEsUnNumero_Version2
@@ -54,7 +52,7 @@ Algoritmo validarSiEsUnNumero_Version2
 	
 	numeroReal = 10.5
 	
-	Escribir "Ingrese un número: "
+	Escribir "Ingrese un nÃºmero: "
 	Leer cadenaIngresada
 	
 	esNumero <- validarSiEsNumero ( cadenaIngresada )
@@ -62,10 +60,10 @@ Algoritmo validarSiEsUnNumero_Version2
 	Si esNumero Entonces
 		numeroValidado <- ConvertirANumero(cadenaIngresada)
 		Escribir ""
-		Escribir "** Prueba de conversión **" 
+		Escribir "** Prueba de conversiÃ³n **" 
 		Escribir "-> Sumar " numeroValidado " + " numeroReal " = " numeroValidado + numeroReal
 	SiNo
 		Escribir ""
-		Escribir cadenaIngresada " No es un número"
+		Escribir cadenaIngresada " No es un nÃºmero"
 	FinSi	
 FinAlgoritmo
